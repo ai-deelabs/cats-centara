@@ -92,7 +92,15 @@
   .nav-links a{font-weight:600;font-size:.94rem;color:var(--ink-soft);transition:color .2s}
   .nav-links a:hover{color:var(--clay-deep)}
   .nav-cta{display:flex;align-items:center;gap:1.2rem}
-  .menu-btn{display:none;background:none;border:none;cursor:pointer;color:var(--ink)}
+  .menu-btn{display:none;background:none;border:none;cursor:pointer;color:var(--ink);padding:4px;align-items:center}
+
+  /* ---------- Mobile menu ---------- */
+  .mobile-menu{display:none;border-top:1px solid var(--line);background:rgba(245,239,228,.97);backdrop-filter:blur(10px)}
+  .mobile-menu.open{display:block}
+  .mobile-menu .wrap{display:flex;flex-direction:column;padding-top:10px;padding-bottom:22px}
+  .mobile-menu a:not(.btn){font-weight:600;font-size:1rem;color:var(--ink-soft);padding:.85rem .2rem;border-bottom:1px solid var(--line);transition:color .2s}
+  .mobile-menu a:not(.btn):hover{color:var(--clay-deep)}
+  .mobile-menu .btn-primary{justify-content:center;margin-top:18px}
 
   /* ---------- Hero ---------- */
   .hero{padding:72px 0 90px;position:relative;overflow:hidden}
@@ -244,9 +252,14 @@
     .foot-grid{gap:34px}
     section{padding:70px 0}
   }
+  @media(min-width:901px){
+    .mobile-menu{display:none!important}
+  }
   @media(max-width:560px){
     body{font-size:16px}
     .wrap{padding:0 20px}
+    .nav-cta>.btn-primary{display:none}
+    .nav-cta{gap:.8rem}
     .hero-stats{gap:1.6rem;flex-wrap:wrap}
     .cta-box{padding:50px 26px}
     .hero-badge{left:0}
@@ -271,9 +284,18 @@
         <button type="button" data-set-lang="en">EN</button>
       </div>
       <a href="#book" class="btn btn-primary"><i data-lucide="calendar-heart"></i><span data-lang-th="จองเข้าพัก" data-lang-en="Reserve a Stay">จองเข้าพัก</span></a>
-      <button class="menu-btn" aria-label="Menu"><i data-lucide="menu"></i></button>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><i data-lucide="menu"></i></button>
     </div>
   </div>
+  <nav class="mobile-menu" id="mobileMenu">
+    <div class="wrap">
+      <a href="#about" data-lang-th="บ้านของเรา" data-lang-en="Our Home">บ้านของเรา</a>
+      <a href="#amenities" data-lang-th="ความสะดวกสบาย" data-lang-en="Comforts">ความสะดวกสบาย</a>
+      <a href="#suites" data-lang-th="ห้องพัก" data-lang-en="Suites">ห้องพัก</a>
+      <a href="#stories" data-lang-th="เรื่องราว" data-lang-en="Stories">เรื่องราว</a>
+      <a href="#book" class="btn btn-primary"><i data-lucide="calendar-heart"></i><span data-lang-th="จองเข้าพัก" data-lang-en="Reserve a Stay">จองเข้าพัก</span></a>
+    </div>
+  </nav>
 </header>
 
 <!-- HERO -->
@@ -554,6 +576,23 @@
   document.querySelectorAll('.lang-switch button').forEach(b=>{
     b.addEventListener('click', ()=> applyLang(b.dataset.setLang));
   });
+
+  // ---------- Mobile menu ----------
+  const menuBtn = document.querySelector('.menu-btn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  function closeMenu(){
+    if(!mobileMenu) return;
+    mobileMenu.classList.remove('open');
+    if(menuBtn) menuBtn.setAttribute('aria-expanded','false');
+  }
+  if(menuBtn && mobileMenu){
+    menuBtn.addEventListener('click', ()=>{
+      const open = mobileMenu.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+    });
+    mobileMenu.querySelectorAll('a').forEach(a=> a.addEventListener('click', closeMenu));
+    window.addEventListener('resize', ()=>{ if(window.innerWidth > 900) closeMenu(); });
+  }
 
   // Scroll reveal
   const obs = new IntersectionObserver((entries)=>{
