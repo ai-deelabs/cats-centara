@@ -1,0 +1,30 @@
+{
+  "slug": "cats-centara",
+  "brand_dna": "Cat's Centara is a warm and inviting cat hotel that offers a homely atmosphere for guests. The design should reflect comfort and coziness, making it a perfect place for cats to relax and feel at home.",
+  "variant_count": 3,
+  "client_id": null,
+  "tags": [
+    "cats",
+    "hospitality",
+    "warm"
+  ],
+  "generated_at": "2026-06-01T04:34:15Z",
+  "prompt_template": "variant.md",
+  "actions": [
+    {
+      "type": "generate",
+      "at": "2026-06-01T04:37:02Z",
+      "variants": {
+        "v1": {
+          "size_bytes": 23539
+        },
+        "v2": {
+          "size_bytes": 25207
+        },
+        "v3": {
+          "size_bytes": 22401
+        }
+      }
+    }
+  ]
+}

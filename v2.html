@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cat's Centara — A Homely Cat Hotel</title>
+<script src="https://unpkg.com/lucide@0.460.0"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Mulish:wght@400;500;600;700&display=swap');
+
+  :root{
+    --cream:#f5efe4;
+    --cream-2:#efe6d6;
+    --paper:#faf6ee;
+    --ink:#2c2521;
+    --ink-soft:#5c5048;
+    --clay:#c06a4b;
+    --clay-deep:#a4543a;
+    --mauve:#8a6b78;
+    --line:#e2d6c2;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Mulish',system-ui,sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.65;
+    font-size:17px;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:500;line-height:1.08;letter-spacing:-0.01em}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+
+  /* ornaments */
+  .eyebrow{
+    font-family:'Mulish';font-weight:700;font-size:.72rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--clay-deep);
+    display:inline-flex;align-items:center;gap:.6rem;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--clay)}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:.55rem;
+    font-family:'Mulish';font-weight:700;font-size:.95rem;
+    padding:.95rem 1.7rem;border-radius:40px;cursor:pointer;border:none;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+  }
+  .btn-primary{background:var(--clay);color:#fff;box-shadow:0 10px 26px -10px rgba(160,84,58,.7)}
+  .btn-primary:hover{transform:translateY(-2px);background:var(--clay-deep);box-shadow:0 16px 34px -10px rgba(160,84,58,.75)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--clay);color:var(--clay-deep)}
+  .btn i{width:18px;height:18px}
+
+  /* ---------- Nav ---------- */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(245,239,228,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:78px}
+  .logo{font-family:'Fraunces';font-weight:600;font-size:1.5rem;letter-spacing:-0.02em;display:flex;align-items:baseline;gap:.1em}
+  .logo .apos{color:var(--clay)}
+  .logo small{font-family:'Mulish';font-weight:600;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--ink-soft);margin-left:.5rem;align-self:center}
+  .nav-links{display:flex;gap:2.3rem;align-items:center}
+  .nav-links a{font-weight:600;font-size:.94rem;color:var(--ink-soft);transition:color .2s}
+  .nav-links a:hover{color:var(--clay-deep)}
+  .nav-cta{display:flex;align-items:center;gap:1.2rem}
+  .menu-btn{display:none;background:none;border:none;cursor:pointer;color:var(--ink)}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:72px 0 90px;position:relative;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+  .hero h1{font-size:clamp(2.8rem,6vw,4.7rem)}
+  .hero h1 em{font-style:italic;color:var(--clay)}
+  .hero p.lead{font-size:1.18rem;color:var(--ink-soft);margin:1.6rem 0 2.2rem;max-width:32ch}
+  .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+  .hero-stats{display:flex;gap:2.4rem;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--line)}
+  .hero-stats .num{font-family:'Fraunces';font-size:1.9rem;color:var(--ink)}
+  .hero-stats .lbl{font-size:.82rem;color:var(--ink-soft);letter-spacing:.02em}
+
+  .hero-media{position:relative}
+  .hero-media .frame{
+    border-radius:200px 200px 22px 22px;overflow:hidden;
+    box-shadow:0 40px 70px -30px rgba(44,37,33,.45);
+    aspect-ratio:4/5;
+  }
+  .hero-media .frame img{width:100%;height:100%;object-fit:cover}
+  .hero-badge{
+    position:absolute;bottom:26px;left:-26px;background:var(--paper);
+    padding:1rem 1.3rem;border-radius:18px;box-shadow:0 20px 40px -18px rgba(44,37,33,.4);
+    display:flex;align-items:center;gap:.85rem;border:1px solid var(--line);
+  }
+  .hero-badge .ring{width:42px;height:42px;border-radius:50%;background:var(--cream);display:grid;place-items:center;color:var(--clay)}
+  .hero-badge .ring i{width:20px;height:20px}
+  .hero-badge b{font-family:'Fraunces';font-weight:600;display:block;font-size:1rem;line-height:1.1}
+  .hero-badge span{font-size:.78rem;color:var(--ink-soft)}
+  .paw-dot{position:absolute;color:var(--clay);opacity:.18}
+
+  /* ---------- Marquee strip ---------- */
+  .strip{background:var(--ink);color:var(--cream);padding:18px 0;overflow:hidden}
+  .strip-track{display:flex;gap:3rem;white-space:nowrap;animation:scroll 26s linear infinite;width:max-content}
+  .strip-track span{font-family:'Fraunces';font-style:italic;font-size:1.15rem;display:inline-flex;align-items:center;gap:1.4rem;opacity:.92}
+  .strip-track span::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--clay)}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  /* ---------- Section base ---------- */
+  section{padding:96px 0}
+  .sec-head{max-width:640px;margin-bottom:56px}
+  .sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+  .sec-head h2{font-size:clamp(2.1rem,4.2vw,3.2rem);margin-top:1rem}
+  .sec-head p{color:var(--ink-soft);margin-top:1rem;font-size:1.08rem}
+
+  /* ---------- About / split ---------- */
+  .about{background:var(--paper)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .about-media{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .about-media img{border-radius:16px;width:100%;height:100%;object-fit:cover}
+  .about-media .tall{aspect-ratio:3/4}
+  .about-media .short{aspect-ratio:3/4;margin-top:38px}
+  .about h2{font-size:clamp(2rem,4vw,2.9rem)}
+  .about .lead-p{font-size:1.1rem;color:var(--ink-soft);margin:1.4rem 0}
+  .about ul{list-style:none;margin-top:1.6rem;display:grid;gap:1rem}
+  .about li{display:flex;gap:.9rem;align-items:flex-start;font-weight:500}
+  .about li i{width:20px;height:20px;color:var(--clay);flex-shrink:0;margin-top:.25rem}
+
+  /* ---------- Amenities ---------- */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .card{
+    background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:36px 30px;
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .card:hover{transform:translateY(-6px);box-shadow:0 30px 50px -28px rgba(44,37,33,.4)}
+  .card .ic{width:54px;height:54px;border-radius:16px;background:var(--cream);display:grid;place-items:center;color:var(--clay-deep);margin-bottom:1.4rem}
+  .card .ic i{width:26px;height:26px}
+  .card h3{font-size:1.35rem;margin-bottom:.5rem}
+  .card p{color:var(--ink-soft);font-size:.98rem}
+
+  /* ---------- Suites ---------- */
+  .suites{background:var(--ink);color:var(--cream)}
+  .suites .eyebrow{color:#e3a98e}
+  .suites .eyebrow::before{background:#e3a98e}
+  .suites .sec-head h2{color:var(--cream)}
+  .suites .sec-head p{color:#c9bdae}
+  .suite-row{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .suite{background:#39302b;border-radius:22px;overflow:hidden;border:1px solid #4a3f38}
+  .suite .pic{aspect-ratio:4/3;overflow:hidden}
+  .suite .pic img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+  .suite:hover .pic img{transform:scale(1.06)}
+  .suite-body{padding:26px 26px 30px}
+  .suite-body h3{color:var(--cream);font-size:1.5rem}
+  .suite-body .price{font-family:'Fraunces';color:#e3a98e;font-size:1.05rem;margin:.4rem 0 .9rem}
+  .suite-body p{color:#c4b8aa;font-size:.95rem}
+  .suite-body .feat{display:flex;gap:1.2rem;margin-top:1.3rem;font-size:.82rem;color:#a99c8e}
+  .suite-body .feat span{display:inline-flex;align-items:center;gap:.4rem}
+  .suite-body .feat i{width:15px;height:15px;color:#e3a98e}
+
+  /* ---------- Gallery ---------- */
+  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:16px}
+  .gallery-grid figure{overflow:hidden;border-radius:16px;position:relative}
+  .gallery-grid img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+  .gallery-grid figure:hover img{transform:scale(1.07)}
+  .g-tall{grid-row:span 2}
+  .g-wide{grid-column:span 2}
+
+  /* ---------- Testimonials ---------- */
+  .quotes{background:var(--paper)}
+  .quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .quote{background:var(--cream);border-radius:22px;padding:34px 30px;border:1px solid var(--line)}
+  .quote .stars{display:flex;gap:.2rem;color:var(--clay);margin-bottom:1rem}
+  .quote .stars i{width:17px;height:17px;fill:var(--clay)}
+  .quote blockquote{font-family:'Fraunces';font-style:italic;font-size:1.15rem;line-height:1.45;color:var(--ink)}
+  .quote .who{display:flex;align-items:center;gap:.8rem;margin-top:1.5rem}
+  .quote .who .av{width:42px;height:42px;border-radius:50%;background:var(--clay);color:#fff;display:grid;place-items:center;font-family:'Fraunces';font-size:1.1rem}
+  .quote .who b{display:block;font-size:.95rem}
+  .quote .who span{font-size:.82rem;color:var(--ink-soft)}
+
+  /* ---------- CTA ---------- */
+  .cta-band{padding:0 0 110px}
+  .cta-box{
+    background:var(--clay);color:#fff;border-radius:34px;padding:74px 56px;
+    text-align:center;position:relative;overflow:hidden;
+    box-shadow:0 40px 80px -40px rgba(160,84,58,.8);
+  }
+  .cta-box h2{font-size:clamp(2.1rem,4.5vw,3.3rem);color:#fff}
+  .cta-box p{max-width:46ch;margin:1.2rem auto 2.2rem;color:#fde7dd;font-size:1.1rem}
+  .cta-box .btn-primary{background:#fff;color:var(--clay-deep)}
+  .cta-box .btn-primary:hover{background:var(--ink);color:#fff}
+  .cta-box .paw{position:absolute;color:#fff;opacity:.12}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--ink);color:#c9bdae;padding:70px 0 36px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+  footer .logo{color:var(--cream);margin-bottom:1rem}
+  footer p{font-size:.93rem;max-width:30ch}
+  footer h4{font-family:'Mulish';font-weight:700;color:var(--cream);font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:1.2rem}
+  footer ul{list-style:none;display:grid;gap:.7rem}
+  footer ul a{font-size:.93rem;transition:color .2s}
+  footer ul a:hover{color:#e3a98e}
+  .foot-contact{display:flex;align-items:center;gap:.6rem;font-size:.93rem;margin-bottom:.7rem}
+  .foot-contact i{width:16px;height:16px;color:#e3a98e}
+  .foot-bottom{margin-top:54px;padding-top:26px;border-top:1px solid #423831;display:flex;justify-content:space-between;font-size:.84rem;flex-wrap:wrap;gap:1rem}
+
+  /* ---------- Reveal ---------- */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- Responsive ---------- */
+  @media(max-width:900px){
+    .nav-links{display:none}
+    .menu-btn{display:block}
+    .hero-grid{grid-template-columns:1fr;gap:46px}
+    .hero-media .frame{aspect-ratio:5/4;border-radius:120px 120px 18px 18px}
+    .about-grid,.cards,.suite-row,.quote-grid,.foot-grid{grid-template-columns:1fr}
+    .cards,.suite-row,.quote-grid{gap:18px}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:170px}
+    .g-wide{grid-column:span 2}
+    .foot-grid{gap:34px}
+    section{padding:70px 0}
+  }
+  @media(max-width:560px){
+    body{font-size:16px}
+    .wrap{padding:0 20px}
+    .hero-stats{gap:1.6rem;flex-wrap:wrap}
+    .cta-box{padding:50px 26px}
+    .hero-badge{left:0}
+    .foot-bottom{flex-direction:column}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#" class="logo">Cat<span class="apos">'</span>s Centara <small>cat hotel</small></a>
+    <nav class="nav-links">
+      <a href="#about">Our Home</a>
+      <a href="#amenities">Comforts</a>
+      <a href="#suites">Suites</a>
+      <a href="#stories">Stories</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#book" class="btn btn-primary"><i data-lucide="calendar-heart"></i>Reserve a Stay</a>
+      <button class="menu-btn" aria-label="Menu"><i data-lucide="menu"></i></button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <i data-lucide="paw-print" class="paw-dot" style="top:40px;right:30%;width:46px;height:46px"></i>
+  <div class="wrap hero-grid">
+    <div class="reveal">
+      <span class="eyebrow">A home away from home</span>
+      <h1>Where every cat is a <em>cherished</em> houseguest.</h1>
+      <p class="lead">Cat's Centara is a small, warm-hearted hotel built around naps in the sun, soft blankets, and quiet corners — the comforts of home, tended with care.</p>
+      <div class="hero-actions">
+        <a href="#book" class="btn btn-primary"><i data-lucide="calendar-heart"></i>Book a Cozy Suite</a>
+        <a href="#about" class="btn btn-ghost"><i data-lucide="arrow-down-right"></i>Take a Look Around</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="num">9 yrs</div><div class="lbl">Welcoming whiskers</div></div>
+        <div><div class="num">2,400+</div><div class="lbl">Happy houseguests</div></div>
+        <div><div class="num">24/7</div><div class="lbl">Loving care</div></div>
+      </div>
+    </div>
+    <div class="hero-media reveal">
+      <div class="frame">
+        <img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=720&h=900&fit=crop" alt="White cat curled up cozily under a soft comforter">
+      </div>
+      <div class="hero-badge">
+        <div class="ring"><i data-lucide="home"></i></div>
+        <div><b>Homely &amp; calm</b><span>No cages, ever</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-track">
+    <span>Sunlit window perches</span><span>Hand-warmed blankets</span><span>Quiet, gentle days</span><span>Daily cuddle rounds</span><span>Home-cooked menus</span>
+    <span>Sunlit window perches</span><span>Hand-warmed blankets</span><span>Quiet, gentle days</span><span>Daily cuddle rounds</span><span>Home-cooked menus</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-media reveal">
+      <img class="tall" src="https://images.unsplash.com/photo-1664731638140-8d58cd3d8c23?w=500&h=660&fit=crop" alt="Cat sitting on a window sill looking out">
+      <img class="short" src="https://images.unsplash.com/photo-1482066490729-6f26115b60dc?w=500&h=660&fit=crop" alt="Brown and white cat resting on white textile">
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Our home</span>
+      <h2>Not a kennel. A real, lived-in home.</h2>
+      <p class="lead-p">We started Cat's Centara because boarding shouldn't feel clinical. Here, the day moves slowly: morning sun on the floorboards, an afternoon stretch, a cushion that's always warm. Your cat settles in like family.</p>
+      <ul>
+        <li><i data-lucide="sun"></i><span><b>Sunlit lounging</b> — south-facing perches that catch the warm afternoon light.</span></li>
+        <li><i data-lucide="heart-handshake"></i><span><b>Familiar routines</b> — we keep your cat's feeding times and quirks just the way they like.</span></li>
+        <li><i data-lucide="bell"></i><span><b>Always within earshot</b> — soft music, gentle voices, never a stressful clatter.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section id="amenities">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Everyday comforts</span>
+      <h2>The little things that feel like home</h2>
+      <p>Every detail is shaped around how cats actually like to live — warm, unhurried, and entirely their own.</p>
+    </div>
+    <div class="cards">
+      <div class="card reveal">
+        <div class="ic"><i data-lucide="bed-double"></i></div>
+        <h3>Snug bedding</h3>
+        <p>Plush, freshly laundered blankets and tucked-away nooks for the deepest, most undisturbed naps.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><i data-lucide="utensils"></i></div>
+        <h3>Home-style menu</h3>
+        <p>Gently prepared meals tailored to each guest, served on a schedule that matches life at home.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><i data-lucide="cat"></i></div>
+        <h3>Gentle play</h3>
+        <p>Feather wands, sunbeam chases, and quiet enrichment — at a pace each cat chooses for themselves.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><i data-lucide="stethoscope"></i></div>
+        <h3>Watchful care</h3>
+        <p>Trained carers keep a quiet eye on every guest, with a vet on call should anyone need a little extra.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><i data-lucide="video"></i></div>
+        <h3>Daily photo notes</h3>
+        <p>A warm little update each day — a snapshot and a few words so you can relax while you're away.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><i data-lucide="leaf"></i></div>
+        <h3>Calm by design</h3>
+        <p>Soft lighting, soundproofed rooms, and unhurried days keep tails relaxed and whiskers content.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUITES -->
+<section class="suites" id="suites">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Where they stay</span>
+      <h2>Rooms with a cushion for every personality</h2>
+      <p>From shy snoozers to sociable explorers, there's a corner of Cat's Centara made just for them.</p>
+    </div>
+    <div class="suite-row">
+      <div class="suite reveal">
+        <div class="pic"><img src="https://images.unsplash.com/photo-1492674253171-7561dea14008?w=560&h=420&fit=crop" alt="Tabby cat resting by a sunny window"></div>
+        <div class="suite-body">
+          <h3>The Sunroom</h3>
+          <div class="price">from $34 / night</div>
+          <p>A bright, window-side retreat for cats who love to watch the world drift by in the warmth.</p>
+          <div class="feat">
+            <span><i data-lucide="sun"></i>Sun perch</span>
+            <span><i data-lucide="ruler"></i>Cozy single</span>
+          </div>
+        </div>
+      </div>
+      <div class="suite reveal">
+        <div class="pic"><img src="https://images.unsplash.com/photo-1543201245-c9031909fe6f?w=560&h=420&fit=crop" alt="Tabby cat sleeping contentedly on the floor"></div>
+        <div class="suite-body">
+          <h3>The Hideaway</h3>
+          <div class="price">from $42 / night</div>
+          <p>A quiet, draped little den for gentle souls who feel safest tucked snugly out of sight.</p>
+          <div class="feat">
+            <span><i data-lucide="moon"></i>Extra calm</span>
+            <span><i data-lucide="ruler"></i>Cozy single</span>
+          </div>
+        </div>
+      </div>
+      <div class="suite reveal">
+        <div class="pic"><img src="https://images.unsplash.com/photo-1587417639866-0da8bb24b7d1?w=560&h=420&fit=crop" alt="Black and white cat lounging on soft textile"></div>
+        <div class="suite-body">
+          <h3>The Family Loft</h3>
+          <div class="price">from $58 / night</div>
+          <p>A roomy, multi-level home for bonded pairs who'd rather not be parted for a moment.</p>
+          <div class="feat">
+            <span><i data-lucide="users"></i>For 2–3</span>
+            <span><i data-lucide="ruler"></i>Spacious</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">A peek inside</span>
+      <h2>Moments from a calm, contented day</h2>
+    </div>
+    <div class="gallery-grid">
+      <figure class="g-tall reveal"><img src="https://images.unsplash.com/photo-1612245229854-e69ff79cd51a?w=400&h=620&fit=crop" alt="Silver tabby resting on a window ledge"></figure>
+      <figure class="g-wide reveal"><img src="https://images.unsplash.com/photo-1516750105099-4b8a83e217ee?w=620&h=300&fit=crop" alt="Grey kitten sitting playfully on the floor"></figure>
+      <figure class="reveal"><img src="https://images.unsplash.com/photo-1515002246390-7bf7e8f87b54?w=320&h=300&fit=crop" alt="Brown tabby cat portrait"></figure>
+      <figure class="reveal"><img src="https://images.unsplash.com/photo-1498100152307-ce63fd6c5424?w=320&h=300&fit=crop" alt="Tuxedo cat looking up"></figure>
+      <figure class="g-wide reveal"><img src="https://images.unsplash.com/photo-1638826595775-e2eae86cda8e?w=620&h=300&fit=crop" alt="Cat playing with a toy on the floor"></figure>
+      <figure class="reveal"><img src="https://images.unsplash.com/photo-1583795128727-6ec3642408f8?w=320&h=300&fit=crop" alt="Brown and white tabby cat"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="quotes" id="stories">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Cat parents say</span>
+      <h2>Worry-free stays, warmly told</h2>
+    </div>
+    <div class="quote-grid">
+      <div class="quote reveal">
+        <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
+        <blockquote>"Milo is usually a nervous traveller, but the daily photos showed him curled up and purring. It truly felt like he was at a friend's home."</blockquote>
+        <div class="who"><div class="av">R</div><div><b>Rina Okafor</b><span>Milo's human</span></div></div>
+      </div>
+      <div class="quote reveal">
+        <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
+        <blockquote>"They remembered that Pepper only eats at dusk and kept her routine exactly. That kind of attention is rare and so reassuring."</blockquote>
+        <div class="who"><div class="av">D</div><div><b>Daniel Brooks</b><span>Pepper's human</span></div></div>
+      </div>
+      <div class="quote reveal">
+        <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
+        <blockquote>"No cages, no clinical smell — just warm rooms and gentle people. Our two boys came home relaxed instead of rattled."</blockquote>
+        <div class="who"><div class="av">S</div><div><b>Sofia Marin</b><span>Biscuit &amp; Bean's human</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band" id="book">
+  <div class="wrap">
+    <div class="cta-box reveal">
+      <i data-lucide="paw-print" class="paw" style="top:30px;left:8%;width:70px;height:70px"></i>
+      <i data-lucide="paw-print" class="paw" style="bottom:24px;right:10%;width:54px;height:54px"></i>
+      <span class="eyebrow" style="color:#fde7dd">Reserve a stay</span>
+      <h2>Give your cat a cozy place to call home.</h2>
+      <p>Suites fill quickly through holiday seasons. Tell us your dates and we'll have a warm corner ready and waiting.</p>
+      <a href="#" class="btn btn-primary"><i data-lucide="calendar-heart"></i>Check Availability</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo">Cat<span class="apos">'</span>s Centara</div>
+        <p>A small, homely cat hotel where comfort, calm, and gentle care come first — always.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#about">Our Home</a></li>
+          <li><a href="#amenities">Comforts</a></li>
+          <li><a href="#suites">Suites</a></li>
+          <li><a href="#stories">Stories</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <ul>
+          <li><a href="#">Book a tour</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">New guests</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Find us</h4>
+        <div class="foot-contact"><i data-lucide="map-pin"></i>14 Maple Row, Riverside</div>
+        <div class="foot-contact"><i data-lucide="phone"></i>(555) 248-9971</div>
+        <div class="foot-contact"><i data-lucide="mail"></i>stay@catscentara.com</div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Cat's Centara. Made with warmth.</span>
+      <span>Privacy · Terms · Guest Care Policy</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  lucide.createIcons();
+  // Scroll reveal
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target);} });
+  },{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{
+    el.style.transitionDelay=(i%3*0.08)+'s';
+    obs.observe(el);
+  });
+</script>
+</body>
+</html>
