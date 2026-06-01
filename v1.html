@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cat's Centara — A Homely Cat Hotel</title>
+<meta name="description" data-lang-th="โรงแรมแมวที่อบอุ่นเหมือนอยู่บ้าน มุมรับแสงแดด ที่นอนนุ่มสบาย และการดูแลด้วยความรักสำหรับเจ้าเหมียวของคุณ" data-lang-en="A homely cat hotel — sunlit nooks, plush beds, and gentle, loving care for your feline friend." content="โรงแรมแมวที่อบอุ่นเหมือนอยู่บ้าน มุมรับแสงแดด ที่นอนนุ่มสบาย และการดูแลด้วยความรักสำหรับเจ้าเหมียวของคุณ">
+<title data-lang-th="Cat's Centara — โรงแรมแมวอบอุ่นเหมือนอยู่บ้าน" data-lang-en="Cat's Centara — A Homely Cat Hotel">Cat's Centara — โรงแรมแมวอบอุ่นเหมือนอยู่บ้าน</title>
 <script src="https://unpkg.com/lucide@0.460.0"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Noto+Serif+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --cream:#f6efe4;
@@ -30,6 +32,8 @@
     line-height:1.65;
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
+    word-break:break-word;
+    overflow-wrap:break-word;
   }
   h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:500;line-height:1.08;letter-spacing:-.01em}
   img{display:block;max-width:100%}
@@ -207,6 +211,27 @@
     .story-media .inset{width:42%}
     .wrap{padding:0 22px}
   }
+
+  /* ---------- THAI TYPOGRAPHY ---------- */
+  html[lang="th"] body{font-family:'Noto Sans Thai','Sukhumvit Set',sans-serif}
+  html[lang="th"] .btn,
+  html[lang="th"] .logo small{font-family:'Noto Sans Thai','Sukhumvit Set',sans-serif}
+  html[lang="th"] h1,
+  html[lang="th"] h2,
+  html[lang="th"] h3,
+  html[lang="th"] .foot-col h4,
+  html[lang="th"] blockquote{font-family:'Noto Serif Thai','Noto Sans Thai',serif}
+  html[lang="th"] .strip-track span{font-family:'Noto Sans Thai','Sukhumvit Set',sans-serif;font-style:normal}
+
+  /* ---------- LANGUAGE SWITCHER ---------- */
+  .lang-toggle{
+    display:inline-flex;align-items:center;gap:.1em;background:transparent;
+    border:1.5px solid var(--line);border-radius:100px;padding:.28em .34em;cursor:pointer;
+    font-family:'Inter';font-size:.78rem;font-weight:600;color:var(--cocoa-soft);
+    transition:border-color .2s;line-height:1}
+  .lang-toggle:hover{border-color:var(--clay)}
+  .lang-toggle .opt{padding:.34em .62em;border-radius:100px;transition:background .2s,color .2s}
+  .lang-toggle .opt.active{background:var(--clay);color:var(--paper)}
 </style>
 </head>
 <body>
@@ -216,11 +241,12 @@
     <nav>
       <a href="#" class="logo">Cat's Centara<span class="dot">.</span></a>
       <div class="nav-links" id="navlinks">
-        <a href="#features">Why Us</a>
-        <a href="#suites">Suites</a>
-        <a href="#story">Care</a>
-        <a href="#book">Reviews</a>
-        <a href="#book" class="btn">Reserve a Stay</a>
+        <a href="#features" data-lang-th="ทำไมต้องเรา" data-lang-en="Why Us">Why Us</a>
+        <a href="#suites" data-lang-th="ห้องพัก" data-lang-en="Suites">Suites</a>
+        <a href="#story" data-lang-th="การดูแล" data-lang-en="Care">Care</a>
+        <a href="#book" data-lang-th="รีวิว" data-lang-en="Reviews">Reviews</a>
+        <a href="#book" class="btn" data-lang-th="จองที่พัก" data-lang-en="Reserve a Stay">Reserve a Stay</a>
+        <button class="lang-toggle" id="langToggle" aria-label="Switch language"><span class="opt opt-th">TH</span><span class="opt opt-en">EN</span></button>
       </div>
       <button class="menu-toggle" id="menuBtn" aria-label="Menu"><i data-lucide="menu"></i></button>
     </nav>
@@ -231,17 +257,17 @@
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="reveal">
-      <span class="eyebrow">A homely hotel for cats</span>
-      <h1>Where your cat feels <em>right at home.</em></h1>
-      <p class="lead">Sun-warmed nooks, soft beds, and gentle hands. A calm retreat designed entirely around feline comfort.</p>
+      <span class="eyebrow" data-lang-th="โรงแรมแมวที่อบอุ่นเหมือนอยู่บ้าน" data-lang-en="A homely hotel for cats">A homely hotel for cats</span>
+      <h1><span data-lang-th="ที่ที่แมวของคุณรู้สึก" data-lang-en="Where your cat feels ">Where your cat feels </span><em data-lang-th="เหมือนอยู่บ้าน" data-lang-en="right at home.">right at home.</em></h1>
+      <p class="lead" data-lang-th="มุมอบอุ่นรับแสงแดด ที่นอนนุ่มสบาย และการดูแลด้วยมือที่อ่อนโยน สถานที่พักผ่อนอันเงียบสงบที่ออกแบบมาเพื่อความสบายของแมวโดยเฉพาะ" data-lang-en="Sun-warmed nooks, soft beds, and gentle hands. A calm retreat designed entirely around feline comfort.">Sun-warmed nooks, soft beds, and gentle hands. A calm retreat designed entirely around feline comfort.</p>
       <div class="hero-cta">
-        <a href="#book" class="btn">Book a Cozy Stay <i data-lucide="arrow-right"></i></a>
-        <a href="#suites" class="btn btn-ghost">View Suites</a>
+        <a href="#book" class="btn"><span data-lang-th="จองที่พักแสนอบอุ่น" data-lang-en="Book a Cozy Stay">Book a Cozy Stay</span> <i data-lucide="arrow-right"></i></a>
+        <a href="#suites" class="btn btn-ghost" data-lang-th="ดูห้องพัก" data-lang-en="View Suites">View Suites</a>
       </div>
       <div class="hero-stats">
-        <div><div class="n">12k+</div><div class="l">Happy guests</div></div>
-        <div><div class="n">24/7</div><div class="l">Loving care</div></div>
-        <div><div class="n">4.9</div><div class="l">Owner rating</div></div>
+        <div><div class="n">12k+</div><div class="l" data-lang-th="แขกผู้มาพักที่มีความสุข" data-lang-en="Happy guests">Happy guests</div></div>
+        <div><div class="n">24/7</div><div class="l" data-lang-th="ดูแลด้วยความรัก" data-lang-en="Loving care">Loving care</div></div>
+        <div><div class="n">4.9</div><div class="l" data-lang-th="คะแนนจากเจ้าของ" data-lang-en="Owner rating">Owner rating</div></div>
       </div>
     </div>
     <div class="hero-media reveal">
@@ -251,7 +277,7 @@
       </div>
       <div class="hero-badge">
         <span class="ico"><i data-lucide="heart-handshake"></i></span>
-        <div><b>Cared for like family</b><span>Daily cuddles included</span></div>
+        <div><b data-lang-th="ดูแลดุจคนในครอบครัว" data-lang-en="Cared for like family">Cared for like family</b><span data-lang-th="พร้อมกอดทุกวัน" data-lang-en="Daily cuddles included">Daily cuddles included</span></div>
       </div>
     </div>
   </div>
@@ -260,8 +286,8 @@
 <!-- MARQUEE -->
 <div class="strip">
   <div class="strip-track">
-    <span>Sunny windowsills</span><span>Plush bedding</span><span>Quiet corners</span><span>Daily playtime</span><span>Webcam check-ins</span><span>Gentle grooming</span>
-    <span>Sunny windowsills</span><span>Plush bedding</span><span>Quiet corners</span><span>Daily playtime</span><span>Webcam check-ins</span><span>Gentle grooming</span>
+    <span data-lang-th="ขอบหน้าต่างรับแดด" data-lang-en="Sunny windowsills">Sunny windowsills</span><span data-lang-th="ที่นอนนุ่มฟู" data-lang-en="Plush bedding">Plush bedding</span><span data-lang-th="มุมเงียบสงบ" data-lang-en="Quiet corners">Quiet corners</span><span data-lang-th="เวลาเล่นทุกวัน" data-lang-en="Daily playtime">Daily playtime</span><span data-lang-th="ดูผ่านกล้องได้ตลอด" data-lang-en="Webcam check-ins">Webcam check-ins</span><span data-lang-th="ดูแลขนอย่างอ่อนโยน" data-lang-en="Gentle grooming">Gentle grooming</span>
+    <span data-lang-th="ขอบหน้าต่างรับแดด" data-lang-en="Sunny windowsills">Sunny windowsills</span><span data-lang-th="ที่นอนนุ่มฟู" data-lang-en="Plush bedding">Plush bedding</span><span data-lang-th="มุมเงียบสงบ" data-lang-en="Quiet corners">Quiet corners</span><span data-lang-th="เวลาเล่นทุกวัน" data-lang-en="Daily playtime">Daily playtime</span><span data-lang-th="ดูผ่านกล้องได้ตลอด" data-lang-en="Webcam check-ins">Webcam check-ins</span><span data-lang-th="ดูแลขนอย่างอ่อนโยน" data-lang-en="Gentle grooming">Gentle grooming</span>
   </div>
 </div>
 
@@ -269,25 +295,25 @@
 <section class="features" id="features">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">Comfort in every detail</span>
-      <h2>Built for the way cats actually like to live.</h2>
-      <p>Every space is shaped around feline instincts — warmth to curl into, height to climb, and the quiet they crave.</p>
+      <span class="eyebrow" data-lang-th="ความสบายในทุกรายละเอียด" data-lang-en="Comfort in every detail">Comfort in every detail</span>
+      <h2 data-lang-th="ออกแบบมาเพื่อวิถีชีวิตที่แมวชื่นชอบอย่างแท้จริง" data-lang-en="Built for the way cats actually like to live.">Built for the way cats actually like to live.</h2>
+      <p data-lang-th="ทุกพื้นที่ถูกออกแบบตามสัญชาตญาณของแมว ทั้งความอบอุ่นให้ขดตัว ที่สูงให้ปีนป่าย และความเงียบสงบที่พวกเขาโหยหา" data-lang-en="Every space is shaped around feline instincts — warmth to curl into, height to climb, and the quiet they crave.">Every space is shaped around feline instincts — warmth to curl into, height to climb, and the quiet they crave.</p>
     </div>
     <div class="feat-grid">
       <div class="feat reveal">
         <span class="ico"><i data-lucide="sun"></i></span>
-        <h3>Sunlit lounging</h3>
-        <p>Wide windows and warm perches so your cat can chase the afternoon light and watch the world go by.</p>
+        <h3 data-lang-th="พักผ่อนรับแสงแดด" data-lang-en="Sunlit lounging">Sunlit lounging</h3>
+        <p data-lang-th="หน้าต่างบานกว้างและมุมอบอุ่น ให้แมวของคุณได้อาบแสงยามบ่ายและเฝ้ามองโลกภายนอกอย่างเพลิดเพลิน" data-lang-en="Wide windows and warm perches so your cat can chase the afternoon light and watch the world go by.">Wide windows and warm perches so your cat can chase the afternoon light and watch the world go by.</p>
       </div>
       <div class="feat reveal">
         <span class="ico"><i data-lucide="bed-double"></i></span>
-        <h3>Plush private beds</h3>
-        <p>Soft, laundered bedding in each suite — a snug burrow that smells of home and stays just-warm-enough.</p>
+        <h3 data-lang-th="เตียงส่วนตัวแสนนุ่ม" data-lang-en="Plush private beds">Plush private beds</h3>
+        <p data-lang-th="ที่นอนนุ่มสะอาดซักใหม่ในทุกห้องพัก มุมอบอุ่นที่หอมกลิ่นบ้านและอุ่นกำลังดี" data-lang-en="Soft, laundered bedding in each suite — a snug burrow that smells of home and stays just-warm-enough.">Soft, laundered bedding in each suite — a snug burrow that smells of home and stays just-warm-enough.</p>
       </div>
       <div class="feat reveal">
         <span class="ico"><i data-lucide="video"></i></span>
-        <h3>Live check-ins</h3>
-        <p>Peek in any time through our suite cameras and get a daily photo note on how your friend is settling in.</p>
+        <h3 data-lang-th="ดูสดได้ตลอดเวลา" data-lang-en="Live check-ins">Live check-ins</h3>
+        <p data-lang-th="แอบดูได้ทุกเมื่อผ่านกล้องในห้องพัก พร้อมรับภาพถ่ายประจำวันบอกเล่าว่าเจ้าเหมียวปรับตัวเป็นอย่างไร" data-lang-en="Peek in any time through our suite cameras and get a daily photo note on how your friend is settling in.">Peek in any time through our suite cameras and get a daily photo note on how your friend is settling in.</p>
       </div>
     </div>
   </div>
@@ -297,40 +323,40 @@
 <section id="suites">
   <div class="wrap">
     <div class="sec-head center reveal">
-      <span class="eyebrow">Choose their nook</span>
-      <h2>Suites that feel like a second home.</h2>
+      <span class="eyebrow" data-lang-th="เลือกมุมโปรดของพวกเขา" data-lang-en="Choose their nook">Choose their nook</span>
+      <h2 data-lang-th="ห้องพักที่อบอุ่นเหมือนบ้านหลังที่สอง" data-lang-en="Suites that feel like a second home.">Suites that feel like a second home.</h2>
     </div>
     <div class="suite-grid">
       <div class="suite reveal">
-        <div class="ph"><span class="tag">Most loved</span><img src="https://images.unsplash.com/photo-1543201245-c9031909fe6f?w=600&h=480&fit=crop" alt="Cozy cat suite with a resting tabby"></div>
+        <div class="ph"><span class="tag" data-lang-th="ยอดนิยม" data-lang-en="Most loved">Most loved</span><img src="https://images.unsplash.com/photo-1543201245-c9031909fe6f?w=600&h=480&fit=crop" alt="Cozy cat suite with a resting tabby"></div>
         <div class="suite-body">
-          <h3>The Cozy Nook</h3>
-          <p>A snug single suite with a heated bed, climbing shelf, and a sunny window seat.</p>
+          <h3 data-lang-th="มุมแสนอบอุ่น" data-lang-en="The Cozy Nook">The Cozy Nook</h3>
+          <p data-lang-th="ห้องพักเดี่ยวแสนอบอุ่น พร้อมเตียงทำความร้อน ชั้นปีนป่าย และที่นั่งริมหน้าต่างรับแดด" data-lang-en="A snug single suite with a heated bed, climbing shelf, and a sunny window seat.">A snug single suite with a heated bed, climbing shelf, and a sunny window seat.</p>
           <div class="suite-foot">
-            <div class="price">$38<span> / night</span></div>
-            <a href="#book">Reserve <i data-lucide="arrow-right"></i></a>
+            <div class="price">$38<span data-lang-th=" / คืน" data-lang-en=" / night"> / night</span></div>
+            <a href="#book"><span data-lang-th="จอง" data-lang-en="Reserve">Reserve</span> <i data-lucide="arrow-right"></i></a>
           </div>
         </div>
       </div>
       <div class="suite reveal">
-        <div class="ph"><span class="tag">For two</span><img src="https://images.unsplash.com/photo-1581081536310-c88f076b4ac4?w=600&h=480&fit=crop" alt="Soft bedding for a relaxed cat"></div>
+        <div class="ph"><span class="tag" data-lang-th="สำหรับสองตัว" data-lang-en="For two">For two</span><img src="https://images.unsplash.com/photo-1581081536310-c88f076b4ac4?w=600&h=480&fit=crop" alt="Soft bedding for a relaxed cat"></div>
         <div class="suite-body">
-          <h3>The Companion</h3>
-          <p>Roomy double suite for bonded pairs — twice the cuddles, shared warmth, and play space.</p>
+          <h3 data-lang-th="ห้องคู่หู" data-lang-en="The Companion">The Companion</h3>
+          <p data-lang-th="ห้องพักคู่กว้างขวางสำหรับคู่หูคู่ใจ กอดอุ่นเป็นสองเท่า แบ่งปันความอบอุ่นและพื้นที่เล่นด้วยกัน" data-lang-en="Roomy double suite for bonded pairs — twice the cuddles, shared warmth, and play space.">Roomy double suite for bonded pairs — twice the cuddles, shared warmth, and play space.</p>
           <div class="suite-foot">
-            <div class="price">$62<span> / night</span></div>
-            <a href="#book">Reserve <i data-lucide="arrow-right"></i></a>
+            <div class="price">$62<span data-lang-th=" / คืน" data-lang-en=" / night"> / night</span></div>
+            <a href="#book"><span data-lang-th="จอง" data-lang-en="Reserve">Reserve</span> <i data-lucide="arrow-right"></i></a>
           </div>
         </div>
       </div>
       <div class="suite reveal">
-        <div class="ph"><span class="tag">Premium</span><img src="https://images.unsplash.com/photo-1769598384555-65b3836e72ed?w=600&h=480&fit=crop" alt="A fluffy grey cat by a window in a premium suite"></div>
+        <div class="ph"><span class="tag" data-lang-th="พรีเมียม" data-lang-en="Premium">Premium</span><img src="https://images.unsplash.com/photo-1769598384555-65b3836e72ed?w=600&h=480&fit=crop" alt="A fluffy grey cat by a window in a premium suite"></div>
         <div class="suite-body">
-          <h3>The Garden View</h3>
-          <p>Our largest retreat with a private bay window, tall cat tree, and afternoon sun all day.</p>
+          <h3 data-lang-th="วิวสวน" data-lang-en="The Garden View">The Garden View</h3>
+          <p data-lang-th="ห้องพักที่กว้างที่สุดของเรา พร้อมหน้าต่างเบย์ส่วนตัว คอนโดแมวสูง และแสงแดดยามบ่ายตลอดวัน" data-lang-en="Our largest retreat with a private bay window, tall cat tree, and afternoon sun all day.">Our largest retreat with a private bay window, tall cat tree, and afternoon sun all day.</p>
           <div class="suite-foot">
-            <div class="price">$84<span> / night</span></div>
-            <a href="#book">Reserve <i data-lucide="arrow-right"></i></a>
+            <div class="price">$84<span data-lang-th=" / คืน" data-lang-en=" / night"> / night</span></div>
+            <a href="#book"><span data-lang-th="จอง" data-lang-en="Reserve">Reserve</span> <i data-lucide="arrow-right"></i></a>
           </div>
         </div>
       </div>
@@ -346,13 +372,13 @@
       <div class="inset"><img src="https://images.unsplash.com/photo-1494342311068-0acb56cfa61d?w=400&h=400&fit=crop" alt="Close portrait of a relaxed cat"></div>
     </div>
     <div class="reveal">
-      <span class="eyebrow">Care that feels like family</span>
-      <h2 style="font-size:clamp(2rem,4vw,3rem);margin-top:16px">More than a stay — a warm welcome.</h2>
-      <p style="color:var(--cocoa-soft);margin-top:16px">Our caretakers learn your cat's quirks, routines, and favorite kind of scratch. Because feeling at home starts with feeling understood.</p>
+      <span class="eyebrow" data-lang-th="การดูแลที่อบอุ่นดุจครอบครัว" data-lang-en="Care that feels like family">Care that feels like family</span>
+      <h2 style="font-size:clamp(2rem,4vw,3rem);margin-top:16px" data-lang-th="มากกว่าการเข้าพัก — คือการต้อนรับอันแสนอบอุ่น" data-lang-en="More than a stay — a warm welcome.">More than a stay — a warm welcome.</h2>
+      <p style="color:var(--cocoa-soft);margin-top:16px" data-lang-th="ผู้ดูแลของเราเรียนรู้นิสัยเฉพาะตัว กิจวัตรประจำวัน และจุดที่แมวของคุณชอบให้ลูบมากที่สุด เพราะความรู้สึกเหมือนอยู่บ้านเริ่มต้นจากการได้รับความเข้าใจ" data-lang-en="Our caretakers learn your cat's quirks, routines, and favorite kind of scratch. Because feeling at home starts with feeling understood.">Our caretakers learn your cat's quirks, routines, and favorite kind of scratch. Because feeling at home starts with feeling understood.</p>
       <ul class="story-list">
-        <li><span class="c"><i data-lucide="stethoscope"></i></span><div><b>On-call wellness checks</b><p>A vet partner is a phone call away, with daily health and appetite notes.</p></div></li>
-        <li><span class="c"><i data-lucide="utensils"></i></span><div><b>Your cat's own menu</b><p>We keep to their usual food and schedule — no upset tummies, no surprises.</p></div></li>
-        <li><span class="c"><i data-lucide="sparkles"></i></span><div><b>Gentle grooming</b><p>Soft brushing and tidy litter, kept fresh throughout the day.</p></div></li>
+        <li><span class="c"><i data-lucide="stethoscope"></i></span><div><b data-lang-th="ตรวจสุขภาพพร้อมดูแลตลอดเวลา" data-lang-en="On-call wellness checks">On-call wellness checks</b><p data-lang-th="สัตวแพทย์พันธมิตรพร้อมให้คำปรึกษาเพียงโทรหา พร้อมบันทึกสุขภาพและการกินอาหารประจำวัน" data-lang-en="A vet partner is a phone call away, with daily health and appetite notes.">A vet partner is a phone call away, with daily health and appetite notes.</p></div></li>
+        <li><span class="c"><i data-lucide="utensils"></i></span><div><b data-lang-th="เมนูเฉพาะสำหรับแมวของคุณ" data-lang-en="Your cat's own menu">Your cat's own menu</b><p data-lang-th="เรายึดตามอาหารและตารางเวลาที่คุ้นเคย ไม่มีอาการท้องไส้ปั่นป่วน ไม่มีเรื่องไม่คาดคิด" data-lang-en="We keep to their usual food and schedule — no upset tummies, no surprises.">We keep to their usual food and schedule — no upset tummies, no surprises.</p></div></li>
+        <li><span class="c"><i data-lucide="sparkles"></i></span><div><b data-lang-th="ดูแลขนอย่างอ่อนโยน" data-lang-en="Gentle grooming">Gentle grooming</b><p data-lang-th="แปรงขนอย่างนุ่มนวลและดูแลกระบะทรายให้สะอาดสดใหม่ตลอดทั้งวัน" data-lang-en="Soft brushing and tidy litter, kept fresh throughout the day.">Soft brushing and tidy litter, kept fresh throughout the day.</p></div></li>
       </ul>
     </div>
   </div>
@@ -361,11 +387,11 @@
 <!-- QUOTE -->
 <section class="quote">
   <div class="wrap">
-    <span class="eyebrow">From our guests' humans</span>
-    <blockquote>"She usually hides for days after boarding. Here she came home <em>relaxed and purring</em> — like she'd just been on a little holiday of her own."</blockquote>
+    <span class="eyebrow" data-lang-th="จากครอบครัวของแขกผู้มาพัก" data-lang-en="From our guests' humans">From our guests' humans</span>
+    <blockquote><span data-lang-th="“ปกติเธอจะหลบซ่อนอยู่หลายวันหลังไปฝากเลี้ยง แต่ที่นี่เธอกลับบ้านมาอย่าง" data-lang-en="&quot;She usually hides for days after boarding. Here she came home ">"She usually hides for days after boarding. Here she came home </span><em data-lang-th="ผ่อนคลายและส่งเสียงครางอย่างมีความสุข" data-lang-en="relaxed and purring">relaxed and purring</em><span data-lang-th=" ราวกับเพิ่งได้ไปพักร้อนในวันหยุดของตัวเองมา”" data-lang-en=" — like she'd just been on a little holiday of her own.&quot;"> — like she'd just been on a little holiday of her own."</span></blockquote>
     <div class="who">
       <img src="https://images.unsplash.com/photo-1515002246390-7bf7e8f87b54?w=120&h=120&fit=crop" alt="Guest cat portrait">
-      <div style="text-align:left"><b>Mira & Luna</b><span>Returning guests since 2022</span></div>
+      <div style="text-align:left"><b>Mira & Luna</b><span data-lang-th="แขกประจำตั้งแต่ปี 2022" data-lang-en="Returning guests since 2022">Returning guests since 2022</span></div>
     </div>
   </div>
 </section>
@@ -376,10 +402,10 @@
     <div class="book-card reveal">
       <i data-lucide="paw-print" class="paw p1" style="width:120px;height:120px"></i>
       <i data-lucide="paw-print" class="paw p2" style="width:150px;height:150px"></i>
-      <span class="eyebrow" style="color:#ffe9d6;justify-content:center">Reserve their cozy corner</span>
-      <h2 style="margin-top:14px">Give your cat a stay that feels like home.</h2>
-      <p>Spaces fill fast on holidays and weekends. Tell us your dates and we'll hold a sunny spot just for them.</p>
-      <a href="#" class="btn">Check Availability <i data-lucide="calendar-heart"></i></a>
+      <span class="eyebrow" style="color:#ffe9d6;justify-content:center" data-lang-th="จองมุมแสนอบอุ่นให้พวกเขา" data-lang-en="Reserve their cozy corner">Reserve their cozy corner</span>
+      <h2 style="margin-top:14px" data-lang-th="มอบการเข้าพักที่อบอุ่นเหมือนบ้านให้แมวของคุณ" data-lang-en="Give your cat a stay that feels like home.">Give your cat a stay that feels like home.</h2>
+      <p data-lang-th="ห้องพักเต็มเร็วในช่วงวันหยุดและสุดสัปดาห์ เพียงบอกวันที่คุณต้องการ แล้วเราจะจองมุมรับแดดอันอบอุ่นไว้ให้พวกเขาโดยเฉพาะ" data-lang-en="Spaces fill fast on holidays and weekends. Tell us your dates and we'll hold a sunny spot just for them.">Spaces fill fast on holidays and weekends. Tell us your dates and we'll hold a sunny spot just for them.</p>
+      <a href="#" class="btn"><span data-lang-th="ตรวจสอบห้องว่าง" data-lang-en="Check Availability">Check Availability</span> <i data-lucide="calendar-heart"></i></a>
     </div>
   </div>
 </section>
@@ -390,31 +416,31 @@
     <div class="foot-grid">
       <div class="foot-col">
         <a href="#" class="logo">Cat's Centara<span class="dot">.</span></a>
-        <p>A warm, homely retreat where every whisker is welcome and every cat is treated like one of the family.</p>
+        <p data-lang-th="สถานที่พักผ่อนอันอบอุ่นเหมือนบ้าน ที่ซึ่งทุกหนวดเคราได้รับการต้อนรับ และแมวทุกตัวได้รับการดูแลดุจคนในครอบครัว" data-lang-en="A warm, homely retreat where every whisker is welcome and every cat is treated like one of the family.">A warm, homely retreat where every whisker is welcome and every cat is treated like one of the family.</p>
       </div>
       <div class="foot-col">
-        <h4>Explore</h4>
-        <a href="#features">Why Us</a>
-        <a href="#suites">Suites</a>
-        <a href="#story">Our Care</a>
-        <a href="#book">Reviews</a>
+        <h4 data-lang-th="สำรวจ" data-lang-en="Explore">Explore</h4>
+        <a href="#features" data-lang-th="ทำไมต้องเรา" data-lang-en="Why Us">Why Us</a>
+        <a href="#suites" data-lang-th="ห้องพัก" data-lang-en="Suites">Suites</a>
+        <a href="#story" data-lang-th="การดูแลของเรา" data-lang-en="Our Care">Our Care</a>
+        <a href="#book" data-lang-th="รีวิว" data-lang-en="Reviews">Reviews</a>
       </div>
       <div class="foot-col">
-        <h4>Visit</h4>
-        <a href="#">Book a Tour</a>
-        <a href="#">Pricing</a>
-        <a href="#">FAQ</a>
-        <a href="#">Gift Stays</a>
+        <h4 data-lang-th="เยี่ยมชม" data-lang-en="Visit">Visit</h4>
+        <a href="#" data-lang-th="นัดเยี่ยมชม" data-lang-en="Book a Tour">Book a Tour</a>
+        <a href="#" data-lang-th="ราคา" data-lang-en="Pricing">Pricing</a>
+        <a href="#" data-lang-th="คำถามที่พบบ่อย" data-lang-en="FAQ">FAQ</a>
+        <a href="#" data-lang-th="บัตรของขวัญเข้าพัก" data-lang-en="Gift Stays">Gift Stays</a>
       </div>
       <div class="foot-col foot-contact">
-        <h4>Say hello</h4>
+        <h4 data-lang-th="ติดต่อเรา" data-lang-en="Say hello">Say hello</h4>
         <div><i data-lucide="map-pin" class="ico"></i> 42 Willow Lane, Garden District</div>
         <div><i data-lucide="phone" class="ico"></i> (555) 018-2240</div>
         <div><i data-lucide="mail" class="ico"></i> stay@catscentara.com</div>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 Cat's Centara. Made with warmth for whiskered guests.</span>
+      <span data-lang-th="© 2026 Cat's Centara · สร้างขึ้นด้วยความอบอุ่นเพื่อเหล่าแขกผู้มีหนวดเครา" data-lang-en="© 2026 Cat's Centara. Made with warmth for whiskered guests.">© 2026 Cat's Centara. Made with warmth for whiskered guests.</span>
       <div class="socials">
         <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
         <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
@@ -442,6 +468,31 @@
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
   lucide.createIcons();
+
+  // Language switcher (TH default) — pure client-side, persisted in localStorage
+  const langToggle=document.getElementById('langToggle');
+  const optTh=document.querySelector('#langToggle .opt-th');
+  const optEn=document.querySelector('#langToggle .opt-en');
+  function applyLang(lang){
+    if(lang!=='th'&&lang!=='en') lang='th';
+    document.documentElement.lang=lang;
+    document.querySelectorAll('[data-lang-th]').forEach(el=>{
+      const val=el.getAttribute('data-lang-'+lang);
+      if(val===null) return;
+      if(el.tagName==='META') el.setAttribute('content',val);
+      else el.textContent=val;
+    });
+    optTh.classList.toggle('active',lang==='th');
+    optEn.classList.toggle('active',lang==='en');
+    try{localStorage.setItem('lang',lang);}catch(e){}
+  }
+  let curLang='th';
+  try{curLang=localStorage.getItem('lang')||'th';}catch(e){}
+  applyLang(curLang);
+  langToggle.addEventListener('click',()=>{
+    curLang=(document.documentElement.lang==='th')?'en':'th';
+    applyLang(curLang);
+  });
 </script>
 </body>
 </html>
