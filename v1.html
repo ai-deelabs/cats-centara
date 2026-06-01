@@ -164,6 +164,7 @@
   .book-card p{max-width:46ch;margin:18px auto 32px;opacity:.94;font-size:1.08rem}
   .book-card .btn{background:var(--paper);color:var(--clay-deep)}
   .book-card .btn:hover{background:var(--cocoa);color:var(--paper);box-shadow:0 12px 30px rgba(0,0,0,.3)}
+  .book-card .eyebrow::before{background:#ffe9d6}
   .book-card .paw{position:absolute;color:rgba(255,255,255,.12)}
   .book-card .p1{top:-30px;left:-20px;transform:rotate(20deg)}
   .book-card .p2{bottom:-40px;right:-10px;transform:rotate(-16deg)}
@@ -194,8 +195,6 @@
     .story-grid{grid-template-columns:1fr;gap:40px}
     .story-media{max-width:440px}
     .foot-grid{grid-template-columns:1fr 1fr}
-  }
-  @media(max-width:640px){
     .nav-links{
       position:fixed;inset:78px 0 auto 0;background:var(--paper);flex-direction:column;
       padding:24px 28px 30px;gap:18px;border-bottom:1px solid var(--line);
@@ -204,6 +203,8 @@
     .nav-links a{font-size:1.05rem}
     .menu-toggle{display:block}
     .nav-links .btn{display:none}
+  }
+  @media(max-width:640px){
     section{padding:70px 0}
     .feat-grid,.suite-grid,.foot-grid{grid-template-columns:1fr}
     .hero-stats{gap:22px}
@@ -244,7 +245,7 @@
         <a href="#features" data-lang-th="ทำไมต้องเรา" data-lang-en="Why Us">Why Us</a>
         <a href="#suites" data-lang-th="ห้องพัก" data-lang-en="Suites">Suites</a>
         <a href="#story" data-lang-th="การดูแล" data-lang-en="Care">Care</a>
-        <a href="#book" data-lang-th="รีวิว" data-lang-en="Reviews">Reviews</a>
+        <a href="#reviews" data-lang-th="รีวิว" data-lang-en="Reviews">Reviews</a>
         <a href="#book" class="btn" data-lang-th="จองที่พัก" data-lang-en="Reserve a Stay">Reserve a Stay</a>
         <button class="lang-toggle" id="langToggle" aria-label="Switch language"><span class="opt opt-th">TH</span><span class="opt opt-en">EN</span></button>
       </div>
@@ -385,7 +386,7 @@
 </section>
 
 <!-- QUOTE -->
-<section class="quote">
+<section class="quote" id="reviews">
   <div class="wrap">
     <span class="eyebrow" data-lang-th="จากครอบครัวของแขกผู้มาพัก" data-lang-en="From our guests' humans">From our guests' humans</span>
     <blockquote><span data-lang-th="“ปกติเธอจะหลบซ่อนอยู่หลายวันหลังไปฝากเลี้ยง แต่ที่นี่เธอกลับบ้านมาอย่าง" data-lang-en="&quot;She usually hides for days after boarding. Here she came home ">"She usually hides for days after boarding. Here she came home </span><em data-lang-th="ผ่อนคลายและส่งเสียงครางอย่างมีความสุข" data-lang-en="relaxed and purring">relaxed and purring</em><span data-lang-th=" ราวกับเพิ่งได้ไปพักร้อนในวันหยุดของตัวเองมา”" data-lang-en=" — like she'd just been on a little holiday of her own.&quot;"> — like she'd just been on a little holiday of her own."</span></blockquote>
@@ -423,7 +424,7 @@
         <a href="#features" data-lang-th="ทำไมต้องเรา" data-lang-en="Why Us">Why Us</a>
         <a href="#suites" data-lang-th="ห้องพัก" data-lang-en="Suites">Suites</a>
         <a href="#story" data-lang-th="การดูแลของเรา" data-lang-en="Our Care">Our Care</a>
-        <a href="#book" data-lang-th="รีวิว" data-lang-en="Reviews">Reviews</a>
+        <a href="#reviews" data-lang-th="รีวิว" data-lang-en="Reviews">Reviews</a>
       </div>
       <div class="foot-col">
         <h4 data-lang-th="เยี่ยมชม" data-lang-en="Visit">Visit</h4>
